@@ -1,0 +1,23 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #f8f9fb;
+}
+.sidebar-active {
+  background-color: #ff6b3d;
+  color: white;
+  border-radius: 12px;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}

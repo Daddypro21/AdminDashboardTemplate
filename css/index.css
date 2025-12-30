@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fb;
+}
+.sidebar-item-active {
+  background-color: #ff6b3d;
+  color: white;
+  border-radius: 12px;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #f1f1f1;
+}
