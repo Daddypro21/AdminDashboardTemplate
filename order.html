@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salestics - Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fb;
+      }
+      .sidebar-item-active {
+        background-color: #ff6b3d;
+        color: white;
+        border-radius: 12px;
+      }
+      .custom-shadow {
+        box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    <div class="flex min-h-screen">
+      <aside
+        class="w-64 bg-white border-r border-gray-100 hidden lg:flex flex-col p-6 sticky top-0 h-screen"
+      >
+        <div class="flex items-center gap-2 mb-10 px-2">
+          <div class="bg-orange-500 p-1.5 rounded-lg text-white">
+            <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+          </div>
+          <span class="text-xl font-bold tracking-tight">Salestics</span>
+        </div>
+
+        <nav class="flex-1 space-y-1">
+          <a
+            href="index.html"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="layout-grid" class="w-4 h-4"></i> Dashboard
+          </a>
+          <a
+            href="schedule.html"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="calendar-range" class="w-4 h-4"></i> Schedule
+          </a>
+          <a
+            href="product.html"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="package" class="w-4 h-4"></i> Products
+          </a>
+          <a
+            href="order.html"
+            class="sidebar-item-active flex items-center gap-3 p-3 text-sm font-semibold"
+          >
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Orders
+          </a>
+          <a
+            href="invoices.html"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="file-text" class="w-4 h-4"></i> Invoices
+          </a>
+          <a
+            href="message.html"
+            class="flex justify-between items-center p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <div class="flex items-center gap-3">
+              <i data-lucide="message-square" class="w-4 h-4"></i> Messages
+            </div>
+            <span class="bg-red-500 text-white text-[10px] px-1.5 rounded-full"
+              >5</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="truck" class="w-4 h-4"></i> Shipments
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 hover:text-orange-500"
+          >
+            <i data-lucide="megaphone" class="w-4 h-4"></i> Campaigns
+          </a>
+        </nav>
+
+        <div class="mt-auto pt-6">
+          <div class="bg-blue-50 p-4 rounded-2xl relative overflow-hidden mb-4">
+            <div class="relative z-10">
+              <i data-lucide="zap" class="text-orange-500 w-5 h-5 mb-2"></i>
+              <p class="text-xs font-bold text-slate-800">
+                Discover New Features!
+              </p>
+              <p class="text-[10px] text-slate-500 mt-1 mb-3">
+                Unlock new features and take your sales to the next level.
+              </p>
+              <button
+                class="bg-orange-500 text-white text-[10px] font-bold py-2 px-4 rounded-lg w-full"
+              >
+                Explore Upgrades
+              </button>
+            </div>
+          </div>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 text-sm text-gray-400 border-t border-gray-50"
+          >
+            <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+          </a>
+        </div>
+      </aside>
+
+      <main class="flex-1 p-4 lg:p-8">
+        <header class="flex justify-between items-center mb-8">
+          <h1 class="text-2xl font-bold">Orders</h1>
+          <div class="flex items-center gap-4">
+            <div
+              class="p-2 bg-white rounded-xl border border-gray-100 cursor-pointer text-gray-400 relative"
+            >
+              <i data-lucide="bell" class="w-5 h-5"></i>
+              <span
+                class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-red-500 rounded-full"
+              ></span>
+            </div>
+            <div
+              class="flex items-center gap-3 bg-white p-1 pr-4 rounded-full border border-gray-100 cursor-pointer"
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=Rafael+Williams&background=E2E8F0&color=475569"
+                class="w-8 h-8 rounded-full"
+                alt="User"
+              />
+              <div class="hidden sm:block">
+                <p class="text-[11px] font-bold leading-none">
+                  Rafael Williams
+                </p>
+                <p class="text-[9px] text-gray-400 mt-1">Admin</p>
+              </div>
+              <i data-lucide="chevron-down" class="w-3 h-3 text-gray-400"></i>
+            </div>
+          </div>
+        </header>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+          <div
+            class="bg-indigo-50/50 p-5 rounded-[24px] border border-indigo-100 flex justify-between items-start"
+          >
+            <div>
+              <p class="text-indigo-900/50 text-xs font-medium mb-1">
+                Total Orders
+              </p>
+              <h3 class="text-2xl font-bold text-indigo-900">1,200</h3>
+              <p class="text-[10px] text-indigo-900/40 mt-1">
+                Yesterday: 1,135
+              </p>
+            </div>
+            <div
+              class="bg-white p-2.5 rounded-xl text-indigo-900 custom-shadow"
+            >
+              <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div
+            class="bg-cyan-50/50 p-5 rounded-[24px] border border-cyan-100 flex justify-between items-start"
+          >
+            <div>
+              <p class="text-cyan-900/50 text-xs font-medium mb-1">Completed</p>
+              <h3 class="text-2xl font-bold text-cyan-900">950</h3>
+              <p class="text-[10px] text-cyan-900/40 mt-1">Yesterday: 912</p>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl text-cyan-900 custom-shadow">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div
+            class="bg-rose-50/50 p-5 rounded-[24px] border border-rose-100 flex justify-between items-start"
+          >
+            <div>
+              <p class="text-rose-900/50 text-xs font-medium mb-1">Canceled</p>
+              <h3 class="text-2xl font-bold text-rose-900">150</h3>
+              <p class="text-[10px] text-rose-900/40 mt-1">Yesterday: 168</p>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl text-rose-900 custom-shadow">
+              <i data-lucide="file-x" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div
+            class="bg-gray-50 p-5 rounded-[24px] border border-gray-100 flex justify-between items-start"
+          >
+            <div>
+              <p class="text-gray-500 text-xs font-medium mb-1">Return</p>
+              <h3 class="text-2xl font-bold text-slate-800">100</h3>
+              <p class="text-[10px] text-gray-400 mt-1">Yesterday: 105</p>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl text-slate-800 custom-shadow">
+              <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-[24px] border border-gray-100 overflow-hidden"
+        >
+          <div
+            class="p-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4"
+          >
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="bg-orange-50 text-orange-500 px-4 py-2 rounded-lg text-xs font-bold border border-orange-100"
+              >
+                All Status <span class="opacity-50 font-normal">(1400)</span>
+              </button>
+              <button
+                class="text-gray-400 px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-50"
+              >
+                Shipped <span class="opacity-50">(200)</span>
+              </button>
+              <button
+                class="text-gray-400 px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-50"
+              >
+                Completed <span class="opacity-50">(950)</span>
+              </button>
+              <button
+                class="text-gray-400 px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-50"
+              >
+                Canceled <span class="opacity-50">(150)</span>
+              </button>
+              <button
+                class="text-gray-400 px-4 py-2 rounded-lg text-xs font-medium hover:bg-gray-50"
+              >
+                Return <span class="opacity-50">(100)</span>
+              </button>
+            </div>
+            <div class="flex items-center gap-2 w-full lg:w-auto">
+              <div class="relative flex-1 lg:w-64">
+                <i
+                  data-lucide="search"
+                  class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Search order"
+                  class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-100 rounded-xl text-xs outline-none focus:ring-1 focus:ring-orange-200"
+                />
+              </div>
+              <button
+                class="p-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-500"
+              >
+                <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+              </button>
+              <button
+                class="bg-orange-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2"
+              >
+                Today <i data-lucide="chevron-down" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead
+                class="bg-gray-50/50 text-[10px] text-gray-400 uppercase font-bold tracking-wider"
+              >
+                <tr>
+                  <th class="py-4 px-6 w-10">
+                    <input type="checkbox" class="rounded border-gray-300" />
+                  </th>
+                  <th class="py-4 px-4 font-bold">
+                    Order ID
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold">
+                    Product Name
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold">
+                    Date
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold">
+                    Customer Name
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold">
+                    Total
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold text-center">
+                    Payment Status
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-4 font-bold text-center">
+                    Order Status
+                    <i
+                      data-lucide="chevrons-up-down"
+                      class="inline w-3 h-3 ml-1"
+                    ></i>
+                  </th>
+                  <th class="py-4 px-6"></th>
+                </tr>
+              </thead>
+              <tbody class="text-xs font-medium divide-y divide-gray-50">
+                <tr class="hover:bg-gray-50/50 transition">
+                  <td class="py-4 px-6">
+                    <input type="checkbox" class="rounded border-gray-300" />
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">#1001</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center"
+                      >
+                        <i
+                          data-lucide="package"
+                          class="w-4 h-4 text-orange-500"
+                        ></i>
+                      </div>
+                      Classic Leather Jacket
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">April 25, 2024</td>
+                  <td class="py-4 px-4">John Smith</td>
+                  <td class="py-4 px-4 font-bold">$50.00</td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-flex items-center gap-1.5 text-blue-500 bg-blue-50 px-2.5 py-1 rounded-lg"
+                    >
+                      <i data-lucide="check-circle" class="w-3 h-3"></i> Paid
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-block w-24 py-1.5 rounded-lg bg-blue-50 text-blue-600 font-bold text-[10px]"
+                      >Completed</span
+                    >
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <i
+                      data-lucide="more-vertical"
+                      class="w-4 h-4 text-gray-300 cursor-pointer"
+                    ></i>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition">
+                  <td class="py-4 px-6">
+                    <input
+                      type="checkbox"
+                      checked
+                      class="rounded border-gray-300 accent-orange-500"
+                    />
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">#1002</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center"
+                      >
+                        <i
+                          data-lucide="shopping-bag"
+                          class="w-4 h-4 text-gray-400"
+                        ></i>
+                      </div>
+                      Designer Handbag
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">April 26, 2024</td>
+                  <td class="py-4 px-4">Emma Brown</td>
+                  <td class="py-4 px-4 font-bold">$150.00</td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-flex items-center gap-1.5 text-blue-500 bg-blue-50 px-2.5 py-1 rounded-lg"
+                    >
+                      <i data-lucide="check-circle" class="w-3 h-3"></i> Paid
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-block w-24 py-1.5 rounded-lg bg-gray-100 text-gray-500 font-bold text-[10px]"
+                      >Return</span
+                    >
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <i
+                      data-lucide="more-vertical"
+                      class="w-4 h-4 text-gray-300 cursor-pointer"
+                    ></i>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition">
+                  <td class="py-4 px-6">
+                    <input
+                      type="checkbox"
+                      checked
+                      class="rounded border-gray-300 accent-orange-500"
+                    />
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">#1003</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center"
+                      >
+                        <i
+                          data-lucide="footprints"
+                          class="w-4 h-4 text-gray-400"
+                        ></i>
+                      </div>
+                      Running Sneakers
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">April 27, 2024</td>
+                  <td class="py-4 px-4">Michael Green</td>
+                  <td class="py-4 px-4 font-bold">$75.00</td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-flex items-center gap-1.5 text-orange-400 bg-orange-50 px-2.5 py-1 rounded-lg"
+                    >
+                      Pending
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-block w-24 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 font-bold text-[10px]"
+                      >Shipped</span
+                    >
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <i
+                      data-lucide="more-vertical"
+                      class="w-4 h-4 text-gray-300 cursor-pointer"
+                    ></i>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50/50 transition">
+                  <td class="py-4 px-6">
+                    <input type="checkbox" class="rounded border-gray-300" />
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">#1004</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center"
+                      >
+                        <i
+                          data-lucide="shirt"
+                          class="w-4 h-4 text-gray-400"
+                        ></i>
+                      </div>
+                      Women's Silk Scarf
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-gray-400">April 27, 2024</td>
+                  <td class="py-4 px-4">Sarah Johnson</td>
+                  <td class="py-4 px-4 font-bold">$40.00</td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-flex items-center gap-1.5 text-blue-500 bg-blue-50 px-2.5 py-1 rounded-lg"
+                    >
+                      <i data-lucide="check-circle" class="w-3 h-3"></i> Paid
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 text-center">
+                    <span
+                      class="inline-block w-24 py-1.5 rounded-lg bg-rose-50 text-rose-500 font-bold text-[10px]"
+                      >Canceled</span
+                    >
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <i
+                      data-lucide="more-vertical"
+                      class="w-4 h-4 text-gray-300 cursor-pointer"
+                    ></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            class="p-6 border-t border-gray-50 flex flex-col sm:flex-row justify-between items-center gap-4"
+          >
+            <p class="text-xs text-gray-400">
+              Showing
+              <select
+                class="mx-1 px-1 bg-gray-50 rounded border-none outline-none text-slate-700 font-bold"
+              >
+                <option>10</option>
+                <option>20</option>
+              </select>
+              out of 512
+            </p>
+            <div class="flex items-center gap-2">
+              <button
+                class="p-1.5 rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50"
+              >
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+              </button>
+              <button
+                class="w-8 h-8 rounded-lg bg-orange-500 text-white text-xs font-bold"
+              >
+                1
+              </button>
+              <button
+                class="w-8 h-8 rounded-lg text-xs font-medium text-gray-400 hover:bg-gray-50"
+              >
+                2
+              </button>
+              <button
+                class="w-8 h-8 rounded-lg text-xs font-medium text-gray-400 hover:bg-gray-50"
+              >
+                3
+              </button>
+              <span class="text-gray-300">...</span>
+              <button
+                class="w-8 h-8 rounded-lg text-xs font-medium text-gray-400 hover:bg-gray-50"
+              >
+                52
+              </button>
+              <button
+                class="p-1.5 rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50"
+              >
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <footer
+          class="mt-8 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-[10px] text-gray-400">Copyright © 2024 Peterdraw</p>
+          <div class="flex gap-4 text-[10px] text-gray-400">
+            <a href="#" class="hover:text-orange-500">Privacy Policy</a>
+            <a href="#" class="hover:text-orange-500">Term and conditions</a>
+            <a href="#" class="hover:text-orange-500">Contact</a>
+          </div>
+          <div class="flex gap-3 grayscale opacity-50">
+            <i data-lucide="globe" class="w-4 h-4"></i>
+            <i data-lucide="twitter" class="w-4 h-4"></i>
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+            <i data-lucide="youtube" class="w-4 h-4"></i>
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
